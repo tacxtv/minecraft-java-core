@@ -65,9 +65,9 @@ export default class Libraries {
         return libraries;
     }
 
-    async GetAssetsOthers(url: any) {
+    async GetAssetsOthers(url: any, payload: any) {
         if (!url) return [];
-        let data = await nodeFetch(url).then(res => res.json());
+        let data = payload || await nodeFetch(url).then(res => res.json());
 
         let assets = [];
         for (let asset of data) {
