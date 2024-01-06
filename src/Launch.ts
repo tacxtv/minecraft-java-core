@@ -39,6 +39,7 @@ type memory = {
 
 type LaunchOPTS = {
     url: string | null,
+    files: any,
     authenticator: any,
     timeout?: number,
     path: string,
@@ -178,7 +179,7 @@ export default class Launch {
         let bundle = new bundleMinecraft(this.options)
 
         let gameLibraries: any = await libraries.Getlibraries(json);
-        let gameAssetsOther: any = await libraries.GetAssetsOthers(this.options.url);
+        let gameAssetsOther: any = await libraries.GetAssetsOthers(this.options.url, this.options.files);
         let gameAssets: any = await new assetsMinecraft(this.options).GetAssets(json);
         let gameJava: any = this.options.javaPath ? { files: [] } : await new javaMinecraft(this.options).GetJsonJava(json);
 
